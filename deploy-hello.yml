@@ -1,0 +1,9 @@
+---
+- hosts: web1
+  gather_facts: false
+  tasks:
+    - name: Copy hello-devops jar to web1
+      ansible.builtin.command: >
+        docker cp /var/jenkins_home/workspace/hello-devops/target/hello-devops-1.0.0.jar
+        web1:/tmp/hello-devops-1.0.0.jar
+      delegate_to: localhost
